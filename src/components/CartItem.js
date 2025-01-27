@@ -5,14 +5,7 @@ export class CartItem extends Component {
     super(props);
     this.handleMinus = this.handleMinus.bind(this);
     this.handlePlus = this.handlePlus.bind(this);
-    // this.updateCartItem = this.updateCartItem.bind(this);
-    // this.props.cartContext.subscribe(this.updateCartItem);
   }
-
-  // updateCartItem() {
-  //   const product = this.props.cartContext.getCarts();
-    
-  // }
 
   handleMinus(item) {
     this.props.cartContext.minusItem(item);
@@ -29,11 +22,10 @@ export class CartItem extends Component {
       <p>${this.props.item.title}</p>
       <div>
         <button class="btn-minus">-</button>
-        <span class="item-count"></span>
+        <span class="item-count">${this.props.item.quantity}</span>
         <button class="btn-plus">+</button>
       </div>
     `;
-
 
     const qu = this.props.cartContext.getQuantity(this.props.item)
 

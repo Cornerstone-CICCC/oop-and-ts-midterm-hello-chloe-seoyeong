@@ -21,7 +21,7 @@ export class CartContext {
     const found = this.carts.find(cart => cart.id === item.id);
     if(found) {
       this.carts = this.carts.map(cart => {
-        if(cart.id === item.id) {df
+        if(cart.id === item.id) {
           return {
             ...cart,
             quantity: cart.quantity + 1
