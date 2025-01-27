@@ -1,6 +1,8 @@
 import { Component } from "../common/Component.js";
 import { Header } from "../components/Header.js";
 import { Footer } from "../components/Footer.js";
+import { CartList } from "../components/CartList.js";
+import { ProductList } from "../components/ProductList.js";
 
 export class App extends Component {
 
@@ -21,8 +23,20 @@ export class App extends Component {
     }).render();
     const footer = new Footer().render();
 
+    const cartList = new CartList({
+      cartContext: this.props.cartContext
+    }).render();
+
+    const productList = new ProductList({
+      cartContext: this.props.cartContext
+    })
+
     appContainer.querySelector('header').appendChild(header);
     appContainer.querySelector('footer').appendChild(footer);
+
+    // cartList.mount(appContainer.querySelector('aside'))
+    productList.mount(appContainer.querySelector('.list-wrap'));
+    // appContainer.querySelector('aside').appendChild(cartList);
 
     return appContainer;
   }
