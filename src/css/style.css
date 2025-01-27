@@ -31,7 +31,12 @@ footer {
   padding: 1rem;
 }
 
+.product-ul {
+  display: flex;
+  flex-wrap: wrap;
+}
 .product-item {
+  width: 25%;
   .product-item__image {
     max-width: 200px;
     img {

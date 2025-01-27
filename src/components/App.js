@@ -36,7 +36,7 @@ export class App extends Component {
 
     // cartList.mount(appContainer.querySelector('aside'))
     productList.mount(appContainer.querySelector('.list-wrap'));
-    // appContainer.querySelector('aside').appendChild(cartList);
+    appContainer.querySelector('aside').appendChild(cartList);
 
     return appContainer;
   }

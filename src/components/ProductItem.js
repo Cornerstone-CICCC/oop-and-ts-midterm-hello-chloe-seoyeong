@@ -7,7 +7,7 @@ export class ProductItem extends Component {
   }
 
   handleAddCart() {
-    alert('added');
+    this.props.cartContext.addCart(this.props.product);
   }
 
   render() {
