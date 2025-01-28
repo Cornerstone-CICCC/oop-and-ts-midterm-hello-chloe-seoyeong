@@ -8,15 +8,6 @@ export class CartContext {
     return this.carts;
   }
 
-  getQuantity(item) {
-    this.carts.filter(cart => {
-      if(cart.id === item.id) {
-        console.log(cart.quantity)
-        return cart.quantity;
-      }
-    })
-  }
-
   addCart(item) {
     const found = this.carts.find(cart => cart.id === item.id);
     if(found) {
@@ -40,13 +31,47 @@ export class CartContext {
     this.notifyListeners();
   }
 
-  plusItem() {
-    console.log("plus")
+  plusItem(item) {
+    // this.addCart(item);
+    this.carts = this.carts.map(cart => {
+      if(cart.id === item.id) {
+        return {
+          ...cart,
+          quantity: cart.quantity + 1
+        }
+      } else {
+        return cart;
+      }
+    })
+
     this.notifyListeners();
   }
 
-  minusItem() {
-    console.log("minus")
+  minusItem(item) {
+    this.carts = this.carts.map(cart => {
+      if(cart.id === item.id) {
+        return {
+          ...cart,
+          quantity: cart.quantity - 1
+        }
+        // if(cart.quantity > 1) {
+        //   return {
+        //     ...cart,
+        //     quantity: cart.quantity - 1
+        //   }
+        // } else {
+        //   console.log(this.carts)
+        // }
+      } else {
+        return cart
+      }
+    })
+    this.notifyListeners();
+  }
+
+  removeItem(item) {
+    this.carts = this.carts.filter(cart => cart.id !== item.id)
+
     this.notifyListeners();
   }
 
