@@ -40,12 +40,54 @@ button {
   flex-wrap: wrap;
 }
 .product-item {
-  width: 25%;
+  width: 50%;
   .product-item__image {
     max-width: 120px;
+    height: 150px;
+    overflow: hidden;
+    margin: 0 auto;
     img {
       width: auto;
       max-width: 100%;
     }
+  }
+  .product-item__info {
+    span {
+      font-size: 12px;
+      background-color: rgb(192, 237, 255);
+      border-radius: 10px;
+      padding: 5px;
+    }
+  }
+}
+
+.item-li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.item-calculator {
+  display: flex;
+  align-items: center;
+  .item-count {
+    padding: 16px;
+    min-width: 80px;
+    text-align: center;
+  }
+}
+.item-total-price {
+  width: 100px;
+}
+
+@media (min-width: 768px) {
+  .product-item {
+    width: 33.33%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .product-item {
+    width: 25%;
   }
 }
