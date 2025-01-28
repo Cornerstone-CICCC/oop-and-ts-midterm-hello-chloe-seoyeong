@@ -9,8 +9,8 @@ export class CartList extends Component {
     this.props.cartContext.subscribe(this.updateCart);
     this.updateTotalPrice = this.updateTotalPrice.bind(this);
     this.props.cartContext.subscribe(this.updateTotalPrice);
-    // this.handleExpand = this.handleExpand.bind(this);
-    this.cartItemList = null;
+    // this.handleShowingCart = this.handleShowingCart.bind(this);
+    this.cartList = null;
     this.totalPrice = null;
   }
 
@@ -23,39 +23,46 @@ export class CartList extends Component {
     this.totalPrice.innerHTML = `
       <p>Total Price: <strong>${total.toFixed(2)}</strong></p>
     `;
-
-    // this.cartItemList.appendChild(totalPrice);
   }
 
   updateCart(item) {
     this.state.items = item;
-    this.cartItemList.innerHTML = "";
-
+    this.cartList.innerHTML = "";
     this.state.items.forEach(item => {
       const cartItem = new CartItem({
         item,
         cartContext: this.props.cartContext
       })
 
-      this.cartItemList.appendChild(cartItem.render());
+      this.cartList.appendChild(cartItem.render());
     })
   }
 
+  // handleShowingCart() {
+  //   this.props.cartContext.controlShowingCart(this.cartList);
+  // }
+
   render() {
-    const cartList = document.createElement('div')
-    cartList.className = 'item-list-wrap'
-    cartList.innerHTML = `
-      <ul></ul>
-      <div class="total-price"></div>
-      <button class="btn-expand">Expand</button>
+    const cartWrap = document.createElement('div')
+    cartWrap.className = 'cart-wrap'
+    cartWrap.innerHTML = `
+      <div class="cart-list-wrap">
+        <ul class="cart-list"></ul>
+        <div class="cart-total-price"></div>
+      </div>
+      <button class="btn-collapse">Collapse</button>
     `;
 
-    this.cartItemList = cartList.querySelector('ul');
-    this.totalPrice = cartList.querySelector('.total-price')
-    cartList.querySelector('.btn-expand').addEventListener('click', () => {
-      cartList.classList.add('clicked');
-    });
+    this.cartList = cartWrap.querySelector('.cart-list');
+    this.totalPrice = cartWrap.querySelector('.cart-total-price')
 
-    return cartList;
+    this.updateTotalPrice(this.state.items); // showing initial "Total price: 0"
+
+    // cartWrap.querySelector('.btn-collapse').addEventListener('click', () => {
+    //   cartWrap.classList.contains('collapsed') ? cartWrap.classList.remove('collapsed') : cartWrap.classList.add('collapsed');
+    // });
+    // cartWrap.querySelector('.btn-collapse').addEventListener('click', this.handleShowingCart);
+
+    return cartWrap;
   }
 }

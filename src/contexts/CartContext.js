@@ -8,6 +8,7 @@ export class CartContext {
     return this.carts;
   }
 
+  // Adding item into Cart
   addCart(item) {
     const found = this.carts.find(cart => cart.id === item.id);
     if(found) {
@@ -31,6 +32,7 @@ export class CartContext {
     this.notifyListeners();
   }
 
+  // plus item in cart
   plusItem(item) {
     // this.addCart(item);
     this.carts = this.carts.map(cart => {
@@ -47,6 +49,7 @@ export class CartContext {
     this.notifyListeners();
   }
 
+  // minus item in cart
   minusItem(item) {
     this.carts = this.carts.map(cart => {
       if(cart.id === item.id) {
@@ -69,9 +72,15 @@ export class CartContext {
     this.notifyListeners();
   }
 
+  // remove item in cart / when item quantity is 1
   removeItem(item) {
     this.carts = this.carts.filter(cart => cart.id !== item.id)
 
+    this.notifyListeners();
+  }
+
+  controlShowingCart(ele) {
+    console.log(ele)
     this.notifyListeners();
   }
 

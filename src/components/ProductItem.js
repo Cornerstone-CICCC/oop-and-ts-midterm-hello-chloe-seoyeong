@@ -11,7 +11,7 @@ export class ProductItem extends Component {
   }
 
   render() {
-    const item = document.createElement('div');
+    const item = document.createElement('li');
     item.className = 'product-item';
 
     item.innerHTML = `
@@ -20,10 +20,8 @@ export class ProductItem extends Component {
       </div>
       <div class="product-item__info">
         <p>${this.props.product.title}</p>
-        <strong>${this.props.product.price}</strong>
-        <ul>
-          <li>${this.props.product.category}</li>
-        </ul>
+        <strong>CAD ${this.props.product.price}</strong>
+        <span class="product-item__category">${this.props.product.category}</span>
       </div>
       <button class="btn btn--add-cart">Add Cart</button>
     `;

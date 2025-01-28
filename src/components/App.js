@@ -12,8 +12,8 @@ export class App extends Component {
     appContainer.innerHTML = `
       <header></header>
       <main>
-        <div class="list-wrap"></div>
-        <aside></aside>
+        <div class="container__product"></div>
+        <div class="container__cart"></div>
       </main>
       <footer></footer>
     `;
@@ -23,20 +23,19 @@ export class App extends Component {
     }).render();
     const footer = new Footer().render();
 
-    const cartList = new CartList({
-      cartContext: this.props.cartContext
-    }).render();
-
     const productList = new ProductList({
       cartContext: this.props.cartContext
     })
 
+    const cartList = new CartList({
+      cartContext: this.props.cartContext
+    }).render();
+
     appContainer.querySelector('header').appendChild(header);
     appContainer.querySelector('footer').appendChild(footer);
 
-    // cartList.mount(appContainer.querySelector('aside'))
-    productList.mount(appContainer.querySelector('.list-wrap'));
-    appContainer.querySelector('aside').appendChild(cartList);
+    productList.mount(appContainer.querySelector('.container__product'));
+    appContainer.querySelector('.container__cart').appendChild(cartList);
 
     return appContainer;
   }

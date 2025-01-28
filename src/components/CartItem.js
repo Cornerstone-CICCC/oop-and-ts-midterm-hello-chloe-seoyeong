@@ -25,9 +25,9 @@ export class CartItem extends Component {
   }
 
   render() {
-    const itemLi = document.createElement('li');
-    itemLi.className = 'item-li'
-    itemLi.innerHTML = `
+    const cartItem = document.createElement('li');
+    cartItem.className = 'cart-item'
+    cartItem.innerHTML = `
       <p>${this.props.item.title}</p>
       <div class="item-calculator">
         <button class="btn-minus">-</button>
@@ -42,10 +42,10 @@ export class CartItem extends Component {
 
     // console.log(qu)
 
-    itemLi.querySelector('.btn-minus').addEventListener('click', this.handleMinus);
-    itemLi.querySelector('.btn-plus').addEventListener('click', this.handlePlus);
-    itemLi.querySelector('.btn-delete').addEventListener('click', this.handleRemove)
+    cartItem.querySelector('.btn-minus').addEventListener('click', this.handleMinus);
+    cartItem.querySelector('.btn-plus').addEventListener('click', this.handlePlus);
+    cartItem.querySelector('.btn-delete').addEventListener('click', this.handleRemove)
 
-    return itemLi;
+    return cartItem;
   }
 }
