@@ -79,11 +79,6 @@ export class CartContext {
     this.notifyListeners();
   }
 
-  controlShowingCart(ele) {
-    console.log(ele)
-    this.notifyListeners();
-  }
-
   subscribe(listener) {
     this.listeners.push(listener);
   }

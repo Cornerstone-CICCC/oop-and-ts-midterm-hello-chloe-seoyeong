@@ -28,7 +28,12 @@ export class CartItem extends Component {
     const cartItem = document.createElement('li');
     cartItem.className = 'cart-item'
     cartItem.innerHTML = `
-      <p>${this.props.item.title}</p>
+      <div>
+        <div class="item-image">
+          <img src=${this.props.item.image} />
+        </div>
+        <p>${this.props.item.title}</p>
+      </div>
       <div class="item-calculator">
         <button class="btn-minus">-</button>
         <span class="item-count">${this.props.item.quantity}</span>
