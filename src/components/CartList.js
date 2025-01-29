@@ -9,9 +9,6 @@ export class CartList extends Component {
     this.props.cartContext.subscribe(this.updateCart);
     this.updateTotalInfo = this.updateTotalInfo.bind(this);
     this.props.cartContext.subscribe(this.updateTotalInfo);
-    // this.updateTotalItem = this.updateTotalItem.bind(this);
-    // this.props.cartContext.subscribe(this.updateTotalItem);
-    // this.handleShowingCart = this.handleShowingCart.bind(this);
     this.cartList = null;
     this.totalPrice = null;
     this.totalItem =  null;
@@ -62,8 +59,8 @@ export class CartList extends Component {
           <div class="cart-total-item"></div>
           <div class="cart-total-price"></div>
         </div>
+        <button class="try">TRY</button>
       </div>
-      <button class="btn-collapse">Collapse</button>
     `;
 
     this.cartList = cartWrap.querySelector('.cart-list');
@@ -72,10 +69,9 @@ export class CartList extends Component {
 
     this.updateTotalInfo(this.state.items); // showing initial "Total price: 0"
 
-    // cartWrap.querySelector('.btn-collapse').addEventListener('click', () => {
-    //   cartWrap.classList.contains('collapsed') ? cartWrap.classList.remove('collapsed') : cartWrap.classList.add('collapsed');
-    // });
-    // cartWrap.querySelector('.btn-collapse').addEventListener('click', this.handleShowingCart);
+    cartWrap.querySelector('.try').addEventListener('click', () => {
+      cartWrap.classList.contains('collapse') ? cartWrap.classList.remove('collapse') : cartWrap.classList.add('collapse')
+    });
 
     return cartWrap;
   }

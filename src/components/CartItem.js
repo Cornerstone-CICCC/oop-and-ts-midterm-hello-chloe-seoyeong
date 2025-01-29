@@ -28,19 +28,21 @@ export class CartItem extends Component {
     const cartItem = document.createElement('li');
     cartItem.className = 'cart-item'
     cartItem.innerHTML = `
-      <div>
-        <div class="item-image">
-          <img src=${this.props.item.image} />
-        </div>
+      <div class="item-image">
+        <img src=${this.props.item.image} />
+      </div>
+      <div class="item-right">
         <p>${this.props.item.title}</p>
+        <strong class="item-total-price">${(this.props.item.quantity * this.props.item.price).toFixed(2)}</strong>
+        <div class="item-calculator">
+          <button class="btn-minus">-</button>
+          <span class="item-count">${this.props.item.quantity}</span>
+          <button class="btn-plus">+</button>
+        </div>
+        <button class="btn-delete">
+          <span class="a11y-hidden">delete</span>
+        </button>
       </div>
-      <div class="item-calculator">
-        <button class="btn-minus">-</button>
-        <span class="item-count">${this.props.item.quantity}</span>
-        <button class="btn-plus">+</button>
-      </div>
-      <strong class="item-total-price">${(this.props.item.quantity * this.props.item.price).toFixed(2)}</strong>
-      <button class="btn-delete">delete</button>
     `;
 
     // const qu = this.props.cartContext.getQuantity(this.props.item)
