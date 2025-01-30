@@ -24,7 +24,8 @@ export class App extends Component {
     const footer = new Footer().render();
 
     const productList = new ProductList({
-      cartContext: this.props.cartContext
+      cartContext: this.props.cartContext,
+      appContainer: appContainer
     })
 
     const cartList = new CartList({

@@ -1,26 +1,26 @@
 import { Component } from "../common/Component.js";
+import { Modal } from "./Modal.js";
 
 export class ProductItem extends Component {
   constructor(props) {
     super(props)
     this.handleAddCart = this.handleAddCart.bind(this);
     this.handleModal = this.handleModal.bind(this);
-    this.modalElement = null
   }
 
   handleAddCart() {
     this.props.cartContext.addCart(this.props.product);
+
   }
 
   handleModal() {
-    this.modal.innerHTML = "";
 
     const modal = new Modal({
-      product,
+      product: this.props.product,
       cartContet: this.props.cartContext
     })
 
-    this.modal.appendChild(modal.render());
+    this.props.appContainer.appendChild(modal.render());
   }
 
   render() {
@@ -34,13 +34,15 @@ export class ProductItem extends Component {
         </div>
         <div class="product-item__info">
           <p>${this.props.product.title}</p>
-          <strong>CAD ${this.props.product.price}</strong>
           <span class="product-item__category">${this.props.product.category}</span>
         </div>
       </a>
-      <button class="btn btn--add-cart">
-        <span class="a11y-hidden">Add Cart</span>
-      </button>
+      <div class="product-item__bottom">
+        <strong class="product-item__price">$ ${this.props.product.price}</strong>
+        <button class="btn btn--add-cart">
+          <span class="a11y-hidden">Add Cart</span>
+        </button>
+      </div>
     `;
 
     item.querySelector('.btn--add-cart').addEventListener('click', this.handleAddCart);

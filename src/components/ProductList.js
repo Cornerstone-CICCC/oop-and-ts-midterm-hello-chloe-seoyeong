@@ -18,17 +18,38 @@ export class ProductList extends Component {
   }
 
   render() {
+    const productWrap = document.createElement('div')
+    productWrap.className = 'product-wrap'
+    productWrap.innerHTML = `
+      <div>
+        <div>
+          <strong>${this.state.products.length} Items</strong>
+        </div>
+        <div>
+          <button class="btn-mode-change">
+            <span>Grid</span>
+          </button>
+        </div>
+      </div>
+    `
     const productUl = document.createElement('ul')
     productUl.className = 'product-ul';
 
     this.state.products.forEach(product => {
       const productItem = new ProductItem({
         product,
-        cartContext: this.props.cartContext
+        cartContext: this.props.cartContext,
+        appContainer: this.props.appContainer
       })
       productUl.appendChild(productItem.render());
     })
 
-    return productUl;
+    productWrap.querySelector('.btn-mode-change').addEventListener('click', () => {
+      productUl.classList.contains('list') ? productUl.classList.remove('list') : productUl.classList.add('list');
+    })
+
+    productWrap.appendChild(productUl);
+
+    return productWrap;
   }
 }

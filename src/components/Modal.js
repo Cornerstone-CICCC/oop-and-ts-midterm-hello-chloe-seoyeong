@@ -1,4 +1,4 @@
-import { Component } from "../common/Component";
+import { Component } from "../common/Component.js";
 
 export class Modal extends Component {
   constructor(props) {
@@ -15,6 +15,6 @@ export class Modal extends Component {
       <div class="dim"></dim>
     `
 
-    return Modal;
+    return modal;
   }
 }
