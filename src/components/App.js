@@ -19,7 +19,7 @@ export class App extends Component {
     `;
 
     const header = new Header({
-      siteTitle: "cart"
+      siteTitle: "The Classes"
     }).render();
     const footer = new Footer().render();
 

@@ -3,23 +3,34 @@ import { Component } from "../common/Component.js";
 export class Header extends Component {
   constructor(props) {
     super(props);
-    this.handleLinkClick = this.handleLinkClick.bind(this);
+    this.btnModeToggle = null;
+    this.handleModeChange = this.handleModeChange.bind(this);
   }
 
-  handleLinkClick() {
-    const sample = document.querySelector('.cart-list-wrap');
-    console.log(sample);
+  handleModeChange() {
+    const productWrap = document.querySelector('.product-wrap');
+    const listMode = productWrap.classList.contains("list")
+
+    if(listMode) {
+      productWrap.classList.remove('list')
+      this.btnModeToggle.classList.remove('list').querySelector('span').innerText = "grid"
+    } else {
+      productWrap.classList.add('list');
+      this.btnModeToggle.classList.add('list').querySelector('span').innerText = "list"
+    }
   }
 
   render() {
     const header = document.createElement('div');
     header.className = 'flex';
     header.innerHTML = `
-      <div>${this.props.siteTitle}</div>
-      <button class="link-cart">Cart</button>
+      <div class="title">${this.props.siteTitle}</div>
+      <button class="btn-mode-change">
+        <span class="a11y-hidden">Grid</span>
+      </button>
     `;
-
-    header.querySelector('.link-cart').addEventListener('click', this.handleLinkClick);
+    this.btnModeToggle = header.querySelector('.btn-mode-change')
+    header.querySelector('.btn-mode-change').addEventListener('click', this.handleModeChange);
 
     return header;
   }

@@ -27,14 +27,28 @@ export class ProductItem extends Component {
     const item = document.createElement('li');
     item.className = 'product-item';
 
+    let categoryClass = "";
+    const category = this.props.product.category
+
+    if(category === "jewelery") {
+      categoryClass = "jew"
+    } else if(category === "electronics") {
+      categoryClass = "elec"
+    } else if(category === "men's clothing" || category === "women's clothing") {
+      categoryClass = "cloth"
+    }
+
     item.innerHTML = `
       <a href="#" class="product-item__detail">
         <div class="product-item__image">
           <img src="${this.props.product.image}" />
         </div>
         <div class="product-item__info">
-          <p>${this.props.product.title}</p>
-          <span class="product-item__category">${this.props.product.category}</span>
+          <p class="product-item__title">${this.props.product.title}</p>
+          <p class="product-item__description">${this.props.product.description}</p>
+          <span class="product-item__category ${categoryClass}">
+            <span class="a11y-hidden">${this.props.product.category}</span>
+          </span>
         </div>
       </a>
       <div class="product-item__bottom">

@@ -22,14 +22,7 @@ export class ProductList extends Component {
     productWrap.className = 'product-wrap'
     productWrap.innerHTML = `
       <div>
-        <div>
-          <strong>${this.state.products.length} Items</strong>
-        </div>
-        <div>
-          <button class="btn-mode-change">
-            <span>Grid</span>
-          </button>
-        </div>
+        <strong>${this.state.products.length} Items</strong>
       </div>
     `
     const productUl = document.createElement('ul')
@@ -42,10 +35,6 @@ export class ProductList extends Component {
         appContainer: this.props.appContainer
       })
       productUl.appendChild(productItem.render());
-    })
-
-    productWrap.querySelector('.btn-mode-change').addEventListener('click', () => {
-      productUl.classList.contains('list') ? productUl.classList.remove('list') : productUl.classList.add('list');
     })
 
     productWrap.appendChild(productUl);

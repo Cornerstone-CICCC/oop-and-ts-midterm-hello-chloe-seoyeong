@@ -45,10 +45,6 @@ export class CartItem extends Component {
       </div>
     `;
 
-    // const qu = this.props.cartContext.getQuantity(this.props.item)
-
-    // console.log(qu)
-
     cartItem.querySelector('.btn-minus').addEventListener('click', this.handleMinus);
     cartItem.querySelector('.btn-plus').addEventListener('click', this.handlePlus);
     cartItem.querySelector('.btn-delete').addEventListener('click', this.handleRemove)
