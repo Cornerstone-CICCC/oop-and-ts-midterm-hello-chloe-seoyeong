@@ -10,7 +10,6 @@ export class ProductItem extends Component {
 
   handleAddCart() {
     this.props.cartContext.addCart(this.props.product);
-
   }
 
   handleModal() {
@@ -20,7 +19,9 @@ export class ProductItem extends Component {
       cartContet: this.props.cartContext
     })
 
-    this.props.appContainer.appendChild(modal.render());
+    const appCon = document.querySelector('.container');
+    appCon.appendChild(modal.render());
+    // this.props.appContainer.appendChild(modal.render());
   }
 
   render() {

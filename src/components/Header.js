@@ -13,10 +13,12 @@ export class Header extends Component {
 
     if(listMode) {
       productWrap.classList.remove('list')
-      this.btnModeToggle.classList.remove('list').querySelector('span').innerText = "grid"
+      this.btnModeToggle.classList.remove('list');
+      this.btnModeToggle.querySelector('span').innerText = "grid"
     } else {
       productWrap.classList.add('list');
-      this.btnModeToggle.classList.add('list').querySelector('span').innerText = "list"
+      this.btnModeToggle.classList.add('list')
+      this.btnModeToggle.querySelector('span').innerText = "list"
     }
   }
 
@@ -26,7 +28,7 @@ export class Header extends Component {
     header.innerHTML = `
       <div class="title">${this.props.siteTitle}</div>
       <button class="btn-mode-change">
-        <span class="a11y-hidden">Grid</span>
+        <span class="a11y-hidden">grid</span>
       </button>
     `;
     this.btnModeToggle = header.querySelector('.btn-mode-change')
