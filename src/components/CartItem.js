@@ -33,15 +33,15 @@ export class CartItem extends Component {
       </div>
       <div class="item-right">
         <p>${this.props.item.title}</p>
-        <strong class="item-total-price">${(this.props.item.quantity * this.props.item.price).toFixed(2)}</strong>
+        <strong class="item-total-price number">${(this.props.item.quantity * this.props.item.price).toFixed(2)}</strong>
         <button class="btn-delete">
           <span class="a11y-hidden">delete</span>
         </button>
       </div>
       <div class="item-calculator">
-        <button class="btn-minus">-</button>
-        <span class="item-count">${this.props.item.quantity}</span>
-        <button class="btn-plus">+</button>
+        <button class="btn-minus"></button>
+        <span class="item-count number">${this.props.item.quantity}</span>
+        <button class="btn-plus"></button>
       </div>
     `;
 

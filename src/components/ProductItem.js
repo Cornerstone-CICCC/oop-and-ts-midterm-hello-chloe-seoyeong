@@ -53,7 +53,7 @@ export class ProductItem extends Component {
         </div>
       </a>
       <div class="product-item__bottom">
-        <strong class="product-item__price">$ ${this.props.product.price}</strong>
+        <strong class="product-item__price number">$ ${this.props.product.price}</strong>
         <button class="btn btn--add-cart">
           <span class="a11y-hidden">Add Cart</span>
         </button>

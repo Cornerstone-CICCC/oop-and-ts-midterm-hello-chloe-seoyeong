@@ -29,24 +29,34 @@ export class CartList extends Component {
       count += item.quantity;
     })
     this.totalPrice.innerHTML = `
-      <p>Total Price: <strong>${total.toFixed(2)}</strong></p>
+      <p>Total Price: <strong class="number">${total.toFixed(2)}</strong></p>
     `;
     this.totalItem.innerHTML = `
-      <p>Total Item(s): <strong>${count}</strong></p>
+      <p>Total Item(s): <strong class="number">${count}</strong></p>
     `;
   }
 
   updateCart(item) {
     this.state.items = item;
     this.cartList.innerHTML = "";
-    this.state.items.forEach(item => {
-      const cartItem = new CartItem({
-        item,
-        cartContext: this.props.cartContext
-      })
+    const emptyCartMessage = document.createElement('li');
+    emptyCartMessage.className = "cart-empty";
+    emptyCartMessage.innerHTML = `
+      <p>No items...</p>
+    `;
 
-      this.cartList.appendChild(cartItem.render());
-    })
+    if(this.state.items.length === 0) {
+      this.cartList.appendChild(emptyCartMessage);
+    } else {
+      this.state.items.forEach(item => {
+        const cartItem = new CartItem({
+          item,
+          cartContext: this.props.cartContext
+        })
+  
+        this.cartList.appendChild(cartItem.render());
+      })
+    }
   }
 
   render() {
@@ -59,7 +69,9 @@ export class CartList extends Component {
           <div class="cart-total-item"></div>
           <div class="cart-total-price"></div>
         </div>
-        <button class="try">TRY</button>
+        <button class="btn-collapse">
+          <span class="a11y-hidden">collapse</span>
+        </button>
       </div>
     `;
 
@@ -67,9 +79,10 @@ export class CartList extends Component {
     this.totalPrice = cartWrap.querySelector('.cart-total-price')
     this.totalItem = cartWrap.querySelector('.cart-total-item')
 
+    this.updateCart(this.state.items);
     this.updateTotalInfo(this.state.items); // showing initial "Total price: 0"
 
-    cartWrap.querySelector('.try').addEventListener('click', () => {
+    cartWrap.querySelector('.btn-collapse').addEventListener('click', () => {
       cartWrap.classList.contains('collapse') ? cartWrap.classList.remove('collapse') : cartWrap.classList.add('collapse')
     });
 
