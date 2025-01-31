@@ -451,7 +451,8 @@ footer {
     right: 0;
     width: calc(30% - 16px);
   }
-  .cart-wrap {
+  .cart-wrap,
+  .cart-wrap.collapse {
     max-height: none;
   }
   .cart-list {
