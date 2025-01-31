@@ -12,6 +12,7 @@ export class CartList extends Component {
     this.cartList = null;
     this.totalPrice = null;
     this.totalItem =  null;
+    this.cartWrap = null;
   }
 
   // updateTotalItem(item) {
@@ -47,22 +48,23 @@ export class CartList extends Component {
 
     if(this.state.items.length === 0) {
       this.cartList.appendChild(emptyCartMessage);
+      this.cartWrap.classList.add('collapse')
     } else {
       this.state.items.forEach(item => {
         const cartItem = new CartItem({
           item,
           cartContext: this.props.cartContext
         })
-  
         this.cartList.appendChild(cartItem.render());
       })
+      this.cartWrap.classList.remove('collapse')
     }
   }
 
   render() {
-    const cartWrap = document.createElement('div')
-    cartWrap.className = 'cart-wrap'
-    cartWrap.innerHTML = `
+    this.cartWrap = document.createElement('div')
+    this.cartWrap.className = 'cart-wrap'
+    this.cartWrap.innerHTML = `
       <div class="cart-list-wrap">
         <ul class="cart-list"></ul>
         <div class="cart-total">
@@ -75,17 +77,17 @@ export class CartList extends Component {
       </div>
     `;
 
-    this.cartList = cartWrap.querySelector('.cart-list');
-    this.totalPrice = cartWrap.querySelector('.cart-total-price')
-    this.totalItem = cartWrap.querySelector('.cart-total-item')
+    this.cartList = this.cartWrap.querySelector('.cart-list');
+    this.totalPrice = this.cartWrap.querySelector('.cart-total-price')
+    this.totalItem = this.cartWrap.querySelector('.cart-total-item')
 
     this.updateCart(this.state.items);
     this.updateTotalInfo(this.state.items); // showing initial "Total price: 0"
 
-    cartWrap.querySelector('.btn-collapse').addEventListener('click', () => {
-      cartWrap.classList.contains('collapse') ? cartWrap.classList.remove('collapse') : cartWrap.classList.add('collapse')
+    this.cartWrap.querySelector('.btn-collapse').addEventListener('click', () => {
+      this.cartWrap.classList.contains('collapse') ? this.cartWrap.classList.remove('collapse') : this.cartWrap.classList.add('collapse')
     });
 
-    return cartWrap;
+    return this.cartWrap;
   }
 }

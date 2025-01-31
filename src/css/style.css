@@ -72,6 +72,7 @@ header {
   background-color: #AD343E;
   color: #fff;
   padding: 5px 16px;
+  border-bottom-right-radius: 28px;
   .flex {
     display: flex;
     justify-content: space-between;
@@ -116,6 +117,7 @@ footer {
   border: none;
   background-size: 50%;
   border-radius: 50%;
+  cursor: pointer;
 }
 .product-ul {
   display: flex;
@@ -282,10 +284,10 @@ footer {
 .btn-collapse {
   position: absolute;
   border: none;
-  top: -40px;
+  top: -36px;
   right: 10px;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 0;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -309,8 +311,8 @@ footer {
 .cart-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 20px;
+  /* align-items: center; */
+  /* gap: 20px; */
   /* padding: 1rem; */
 }
 .cart-item + .cart-item {
@@ -326,10 +328,11 @@ footer {
   color: #60606099;
 }
 .item-image {
-  width: 60px;
-  height: 80px;
+  width: 40px;
+  height: 60px;
   overflow: hidden;
   flex-shrink: 0;
+  margin-right: 12px;
   img {
     width: 100%;
     height: 100%;
@@ -338,7 +341,10 @@ footer {
 }
 .item-right {
   display: flex;
-  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  flex-grow: 1;
+  /* align-items: center; */
   p {
     /* one line ellipsis */
     /* overflow: hidden;
@@ -350,13 +356,20 @@ footer {
     /* multiple line ellipsis */
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    line-clamp: 2;
-    -webkit-line-clamp: 2;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
     overflow: hidden;
     width: 100%;
     font-size: 14px;
     word-break: break-all;
+    font-weight: 600;
   }
+}
+.item-right-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
 }
 .item-calculator {
   display: flex;
@@ -384,8 +397,8 @@ footer {
 }
 
 .btn-delete {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   background: url(../assets/icon-delete.svg) no-repeat center;
   border: none;
   background-size: 60%;
@@ -393,6 +406,7 @@ footer {
 
 .cart-total {
   background-color: #F2AF29;
+  border-top-left-radius: 26px;
   display: flex;
   justify-content: space-between;
   padding-top: 24px;
@@ -401,7 +415,7 @@ footer {
   right: 0;
   left: 0;
   padding: 24px 16px;
-  box-shadow: 0 -6px 13px 2px #fff;
+  box-shadow: -9px -6px 13px 2px #fff;
 }
 .item-total-price {
   width: 100px;
@@ -416,18 +430,32 @@ footer {
 
 @media (min-width: 1000px) {
   .container main{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+    /* display: grid;
+    grid-template-columns: auto minmax(300px 500px) */
+    display: flex;
+  }
+  .container__product {
+    width: 70%;
   }
   .container__cart {
-    position: relative;
+    width: 30%;
+  }
+  .container__cart {
+    /* position: relative; */
     margin-top: 54px;
     margin-right: 16px;
     margin-bottom: 20px;
     border-radius: 20px;
+    position: fixed;
+    bottom: unset;
+    right: 0;
+    width: calc(30% - 16px);
   }
   .cart-wrap {
     max-height: none;
+  }
+  .cart-list {
+    padding-bottom: 32px;
   }
   .product-item {
     width: calc(33.33% - 12px);
@@ -451,7 +479,7 @@ footer {
     border-bottom-left-radius: 20px;
     box-shadow: none;
   }
-  .item-calculator {
-    flex-direction: row;
+  .item-image {
+    margin-right: 16px;
   }
 }
