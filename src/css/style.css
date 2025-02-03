@@ -438,9 +438,6 @@ footer {
     width: 70%;
   }
   .container__cart {
-    width: 30%;
-  }
-  .container__cart {
     /* position: relative; */
     margin-top: 54px;
     margin-right: 16px;
@@ -450,6 +447,7 @@ footer {
     bottom: unset;
     right: 0;
     width: calc(30% - 16px);
+    padding-bottom: 64px;
   }
   .cart-wrap,
   .cart-wrap.collapse {

@@ -20,7 +20,7 @@ export class ProductItem extends Component {
     })
 
     const appCon = document.querySelector('.container');
-    appCon.appendChild(modal.render());
+    // appCon.appendChild(modal.render());
     // this.props.appContainer.appendChild(modal.render());
   }
 
